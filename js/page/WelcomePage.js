@@ -13,15 +13,15 @@ import {Platform, StyleSheet, Text, View} from 'react-native';
 type Props = {};
 export default class WelcomePage extends Component<Props> {
     componentDidMount() {
-        // this.timer = setTimeout(() => { //停留两秒跳转主页
-        //     const {navigation} = this.props;
-        //     navigation.navigate("Main")
-        //
-        // }, 2000)
+        this.timer = setTimeout(() => { //停留两秒跳转主页
+            const {navigation} = this.props;
+            navigation.navigate("Main")
+
+        }, 2000)
     }
 
     componentWillMount() {  //时间没到的时候关闭组件，导致泄露，所有需要关闭time
-        // this.timer && clearTimeout(this.timer)
+        this.timer && clearTimeout(this.timer)
     }
 
 

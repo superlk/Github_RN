@@ -3,7 +3,8 @@ import {
     createStackNavigator,
     createBottomTabNavigator,
     createSwitchNavigator,
-    createMaterialTopTabNavigator
+    createMaterialTopTabNavigator,
+    createAppContainer
 } from 'react-navigation';
 import WelcomePage from '../page/WelcomePage';
 import HomePage from '../page/HomePage';
@@ -34,12 +35,16 @@ const MainNavigator = createStackNavigator({
     }
 });
 
-export default createSwitchNavigator({
+const swicthNavigator= createSwitchNavigator({
     Init: InitNavigator,
     Main: MainNavigator,
 }, {
     navigationOptions: {
         header: null // 通过header这是为null禁用顶部标题
     },
-})
+});
+
+
+export default createAppContainer(swicthNavigator)
+
 
