@@ -8,14 +8,18 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import NavigationUitl from '../navigator/NavigationUtil'
 
 
 type Props = {};
 export default class WelcomePage extends Component<Props> {
     componentDidMount() {
         this.timer = setTimeout(() => { //停留两秒跳转主页
-            const {navigation} = this.props;
-            navigation.navigate("Main")
+            // const {navigation} = this.props;
+            // navigation.navigate("Main")
+            NavigationUitl.resetToHomePage({
+                navigation:this.props.navigation
+            })
 
         }, 2000)
     }
