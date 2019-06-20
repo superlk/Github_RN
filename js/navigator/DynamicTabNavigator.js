@@ -13,9 +13,10 @@ import {
     createBottomTabNavigator,
     createSwitchNavigator,
     createMaterialTopTabNavigator,
-    createAppContainer
+    createAppContainer,
+    BottomTabBar,
 } from 'react-navigation';
-// import {BottomTabBar} from 'react-navigation-tabs'
+// import {BottomTabBar} from 'react-navigation-tabs';
 import PopularPage from '../page/PopularPage';
 import TrendingPage from '../page/TrendingPage';
 import FavoritePage from '../page/FavoritePage';
@@ -94,9 +95,9 @@ export default class DynamicTabNavigator extends Component<Props> {
         const tabs = {PopularPage, TrendingPage, FavoritePage, MyPage};  //根据需要定制动态显示的tab
         PopularPage.navigationOptions.tabBarLabel = "最新" // 动态配置属性
         return createBottomTabNavigator(tabs,
-            // {
-            //     tabBarComponent: TabBarComponent
-            // }
+            {
+                tabBarComponent: TabBarComponent
+            }
         )
     }
 
@@ -109,32 +110,31 @@ export default class DynamicTabNavigator extends Component<Props> {
     }
 }
 
-// class TabBarComponent extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.theme = {
-//             tintColor: props.activeTintColor,
-//             updateTime: new Date().getTime() //标志位
-//         }
-//     }
-//
-//     render() {
-//         const {routes, index} = this.props.navigation.state;
-//         if (routes[index].params) {
-//             const {theme} = routes[index].params;
-//             // 以最新更新时间为住，防止被其他的tab之前的修改覆盖掉
-//             if (theme && theme.updateTime > this.theme.updateTime) {
-//                 this.theme = theme
-//
-//             }
-//         }
-//         return <BottomTabBar
-//             {...this.props}
-//             activeTintColor={this.theme.tintColor || this.props.activeTintColor}
-//         />
-//     }
-//
-// }
+class TabBarComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.theme = {
+            tintColor: props.activeTintColor,
+            updateTime: new Date().getTime() //标志位
+        }
+    }
+
+    render() {
+        const {routes, index} = this.props.navigation.state;
+        if (routes[index].params) {
+            const {theme} = routes[index].params;
+            // 以最新更新时间为住，防止被其他的tab之前的修改覆盖掉
+            if (theme && theme.updateTime > this.theme.updateTime) {
+                this.theme = theme
+            }
+        }
+        return <BottomTabBar
+            {...this.props}
+            activeTintColor={this.theme.tintColor || this.props.activeTintColor}
+        />
+    }
+
+}
 
 
 const styles = StyleSheet.create({
