@@ -14,22 +14,56 @@ import DetailPage from "./DetailPage";
 
 type Props = {};
 export default class PopularPage extends Component<Props> {
-    render() {
-        const TopNavigator = createMaterialTopTabNavigator({
-            PopularTab1: {
-                screen: PopularTab,
-                navigationOptions: {
-                    title: 'Tab1'
-                }
-            },
-            PopularTab2: {
-                screen: PopularTab,
-                navigationOptions: {
-                    title: 'Tab2'
+    constructor(props){
+        super(props);
+        this.tabNames=['Java','Android','IOS','React','React Native','Python']
+    }
+
+    // 动态获取tab数据
+    genTabs(){
+        const tabs={};
+        this.tabNames.forEach((item,index)=>{
+            tabs[`tab${index}`]={
+                screen:props=><PopularTab {...props} tabLabel={item}/>, //传数据
+                // screen:PopularTab,
+                navigationOptions:{
+                    title:item
                 }
             }
-
         });
+        return tabs
+    }
+    render() {
+        const TopNavigator = createMaterialTopTabNavigator(
+        //     {
+        //     PopularTab1: {
+        //         screen: PopularTab,
+        //         navigationOptions: {
+        //             title: 'Tab1'
+        //         }
+        //     },
+        //     PopularTab2: {
+        //         screen: PopularTab,
+        //         navigationOptions: {
+        //             title: 'Tab2'
+        //         }
+        //     }
+        //
+        // }
+            this.genTabs(),{
+                tabBarOptions:{
+                    tabStyle:styles.tabStyle ,//样式
+                    upperCaseLabel:false ,// 是否使标签大写，默认是true
+                    scrollEnabled:true,// 是否支持滚动，默认是false
+                    style:{
+                        backgroundColor:'#678' // 背景色
+                    },
+                    indicatorStyle:styles.indicatorStyle, //标签指示器的样式
+                    labelStyle:styles.labelStyle,//字体样式
+
+                }
+            }
+        );
 
         const Top = createAppContainer(TopNavigator);
         return (
@@ -75,4 +109,14 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
+    tabStyle:{
+        minWidth:50
+    },
+    indicatorStyle:{
+        height:2,
+        backgroundColor:'white'
+    },
+    labelStyle:{
+        fontSize: 13,
+    }
 });
