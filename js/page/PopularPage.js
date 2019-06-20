@@ -31,7 +31,7 @@ export default class PopularPage extends Component<Props> {
 
         });
 
-        const Top = createAppContainer(TopNavigator)
+        const Top = createAppContainer(TopNavigator);
         return (
             <View style={{flex: 1, marginTop: 40}}>
                 <Top/>

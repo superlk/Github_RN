@@ -13,6 +13,11 @@ import NavigationUitl from '../navigator/NavigationUtil'
 
 type Props = {};
 export default class WelcomePage extends Component<Props> {
+    constructor(props) {
+        super(props)
+        console.disableYellowBox = true //去除警告
+    }
+
     componentDidMount() {
         this.timer = setTimeout(() => { //停留两秒跳转主页
             // const {navigation} = this.props;
@@ -21,7 +26,7 @@ export default class WelcomePage extends Component<Props> {
                 navigation:this.props.navigation
             })
 
-        }, 2000)
+        }, 200)
     }
 
     componentWillMount() {  //时间没到的时候关闭组件，导致泄露，所有需要关闭time

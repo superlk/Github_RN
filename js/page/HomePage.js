@@ -23,9 +23,15 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import NavigationUtil from '../navigator/NavigationUtil';
+import DynamicTabNavigator from '../navigator/DynamicTabNavigator';
 
 type Props = {};
 export default class HomePage extends Component<Props> {
+    constructor(props) {
+        super(props)
+        console.disableYellowBox = true
+    }
+
     tabNavigator() {
         return createBottomTabNavigator({
             PopularPage: {
@@ -84,11 +90,12 @@ export default class HomePage extends Component<Props> {
     }
 
     render() {
-        NavigationUtil.navigation=this.props.navigation;// 上层navigation
-        const tabNavigator = this.tabNavigator();
-        const Tab = createAppContainer(tabNavigator);
+        NavigationUtil.navigation = this.props.navigation;// 上层navigation
+        // const tabNavigator = this.tabNavigator();
+        // const Tab = createAppContainer(tabNavigator);
 
-        return <Tab/>
+        // return <Tab/>
+        return <DynamicTabNavigator/>
     }
 }
 
