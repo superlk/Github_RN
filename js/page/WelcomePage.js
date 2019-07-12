@@ -26,7 +26,7 @@ export default class WelcomePage extends Component<Props> {
                 navigation:this.props.navigation
             })
 
-        }, 2000)
+        }, 1000)
     }
 
     componentWillMount() {  //时间没到的时候关闭组件，导致泄露，所有需要关闭time
