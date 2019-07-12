@@ -14,7 +14,7 @@ import NavigationUitl from '../navigator/NavigationUtil'
 type Props = {};
 export default class WelcomePage extends Component<Props> {
     constructor(props) {
-        super(props)
+        super(props);
         console.disableYellowBox = true //去除警告
     }
 
@@ -26,7 +26,7 @@ export default class WelcomePage extends Component<Props> {
                 navigation:this.props.navigation
             })
 
-        }, 200)
+        }, 2000)
     }
 
     componentWillMount() {  //时间没到的时候关闭组件，导致泄露，所有需要关闭time

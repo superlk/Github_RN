@@ -9,7 +9,10 @@ import {
 import WelcomePage from '../page/WelcomePage';
 import HomePage from '../page/HomePage';
 import DetailPage from '../page/DetailPage';
+import {connect} from 'react-redux';
+import {createReactNavigationReduxMiddleware,createReduxContainer} from 'react-navigation-redux-helpers'
 
+export const rootCom="Init"; // 设置根路由
 
 const InitNavigator = createStackNavigator({
     WelcomePage: {
@@ -35,7 +38,7 @@ const MainNavigator = createStackNavigator({
     }
 });
 
-const swicthNavigator= createSwitchNavigator({
+export const RootNavigator= createSwitchNavigator({
     Init: InitNavigator,
     Main: MainNavigator,
 }, {
@@ -44,7 +47,17 @@ const swicthNavigator= createSwitchNavigator({
     },
 });
 
+export  const  middleware =createReactNavigationReduxMiddleware(
+    // 'root',  // 使用createReduxContainer ，不需要这个，
+        state=>state.nav);
 
-export default createAppContainer(swicthNavigator)
+const AppWithNavigationSate=createReduxContainer(RootNavigator,'root'); //reduxifyNavigator 已经弃用，该用createReduxContainer
+
+const mapStateToProps=state=>({
+    state:state.nav
+});
+
+export default connect(mapStateToProps)(AppWithNavigationSate);
+// export default createAppContainer(RootNavigator)
 
 
