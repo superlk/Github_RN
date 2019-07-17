@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Button, Platform, StyleSheet, Text, View} from 'react-native';
+import NavigationUtil from "../navigator/NavigationUtil";
 
 type Props = {};
 export default class MyPage extends Component<Props> {
@@ -25,6 +26,32 @@ export default class MyPage extends Component<Props> {
                     }
                   })
                 }}/>
+        <Text onPress={() => {
+          NavigationUtil.goPage({
+            navigation: this.props.navigation
+          }, "DetailPage")
+        }}>跳转到详情</Text>
+        <Button
+            title={"Fetch 使用"}
+            onPress={() => {
+              NavigationUtil.goPage({
+                navigation: this.props.navigation
+              }, "FetchDemoPage")
+            }}/>
+        <Button
+            title={"AsyncStorage 使用"}
+            onPress={() => {
+              NavigationUtil.goPage({
+                navigation: this.props.navigation
+              }, "AsyncStorageDemoPage")
+            }}/>
+        <Button
+            title={"离线缓存框架"}
+            onPress={() => {
+              NavigationUtil.goPage({
+                navigation: this.props.navigation
+              }, "DataStoreDemoPage")
+            }}/>
       </View>
     );
   }
