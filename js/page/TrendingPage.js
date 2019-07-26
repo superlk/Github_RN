@@ -89,7 +89,7 @@ type Props = {};
 export default class TrendingPage extends Component<Props> {
     constructor(props) {
         super(props);
-        this.tabNames = ['ALL', 'C', 'C#', 'PHP','JavaScript','React', 'React Native', 'Python']
+        this.tabNames = ['Python', 'C', 'C#', 'PHP', 'JavaScript', 'React', 'React Native',]
     }
 
     // 动态获取tab数据
@@ -211,9 +211,9 @@ class TrendingTab extends Component<Props> {
     renderItem(data) {
         const item = data.item;
         return <TrendingItem item={item}
-                            onSelect={() => {
-                            }
-                            }
+                             onSelect={() => {
+                             }
+                             }
         />
     }
 
