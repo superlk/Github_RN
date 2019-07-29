@@ -246,6 +246,7 @@ class TrendingTab extends Component<Props> {
             this.timeSpan = timeSpan;
             this.loadData()
         });
+        this.loadData()
     }
 
     componentWillUnmount(){
@@ -290,6 +291,8 @@ class TrendingTab extends Component<Props> {
         const item = data.item;
         return <TrendingItem item={item}
                              onSelect={() => {
+                                 NavigationUtil.goPage({projectModel: item}, 'DetailPage')
+
                              }
                              }
         />
