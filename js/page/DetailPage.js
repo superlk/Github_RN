@@ -21,6 +21,7 @@ export default class DetailPage extends Component<Props> {
         super(props);
         this.params = this.props.navigation.state.params;
         const {projectModel} = this.params;
+        console.log("......",projectModel)
         this.url = projectModel.html_url || TRENDING_URL + projectModel.fullName;
         const title = projectModel.full_name || projectModel.fullName;
         this.state = {

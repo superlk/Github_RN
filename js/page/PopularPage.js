@@ -152,7 +152,7 @@ class PopularTab extends Component<Props> {
         return <PopularItem
             projectModel={item}
             onSelect={() => {
-                NavigationUtil.goPage({projectModel: item}, 'DetailPage')
+                NavigationUtil.goPage({projectModel: item.item}, 'DetailPage')
             }
             }
             onFavorite={(item, isFavorite) => FavoriteUtil.onFavorite(favoriteDao, item, isFavorite, FLAG_STORAGE.flag_popular)}
@@ -160,7 +160,6 @@ class PopularTab extends Component<Props> {
     }
 
     genIndicator() {
-        console.log("....",this._store().hideLoadingMore)
         return this._store().hideLoadingMore ? null :
             <View style={styles.indicatorContainer}>
                 <ActivityIndicator
@@ -178,7 +177,7 @@ class PopularTab extends Component<Props> {
         // }s
         let store = this._store();
 
-        console.log('>>>>>>>>',store)
+
 
         return (
             <View style={styles.container}>
