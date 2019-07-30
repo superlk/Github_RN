@@ -45,6 +45,12 @@ export default class BaseItem extends Component {
         this.props.onFavorite(this.props.projectModel.item, !this.state.isFavorite)
     }
 
+    onItemClick() {
+        this.props.onSelect(isFavorite => {
+            this.setFavoriteSate(isFavorite);
+        });
+    }
+
     _favoriteIcon() {
         return <TouchableOpacity
             style={{padding: 6}}

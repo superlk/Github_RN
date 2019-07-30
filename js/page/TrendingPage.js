@@ -297,8 +297,8 @@ class TrendingTab extends Component<Props> {
         const item = data.item;
         return <TrendingItem
             projectModel={item}
-            onSelect={() => {
-                NavigationUtil.goPage({projectModel: item.item}, 'DetailPage')
+            onSelect={(callback) => {
+                NavigationUtil.goPage({projectModel: item,flag:FLAG_STORAGE.flag_trending,callback}, 'DetailPage')
 
             }
             }
