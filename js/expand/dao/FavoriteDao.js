@@ -35,12 +35,10 @@ export default class FavoriteDao {
                 }
 
                 let index = favoriteKeys.indexOf(key);
-                console.log("---",index)
                 if (isAdd) {//如果是添加且key不存在则添加到数组中
                     if (index === -1) favoriteKeys.push(key);
                 } else {//如果是删除且key存在则将其从数值中移除
                     if (index !== -1) favoriteKeys.splice(index, 1);
-                    console.log("favoriteKeys===>",favoriteKeys,index)
                 }
                 AsyncStorage.setItem(this.favoriteKey, JSON.stringify(favoriteKeys))
             }
