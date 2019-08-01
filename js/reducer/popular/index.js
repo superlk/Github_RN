@@ -27,11 +27,11 @@ export default function onAction(state = defaultState, action) {
                 ...state,
                 [action.storeName]: {
                     ...state[action.storeName],
-                    items:action.items, // 原始数据
+                    items: action.items, // 原始数据
                     projectModels: action.projectModels, //此次要展示的数据
                     isLoading: false,
-                    hideLoadingMore:false,
-                    pageIndex:action.pageIndex
+                    hideLoadingMore: false,
+                    pageIndex: action.pageIndex
                 }
             };
         case Types.POPULAR_REFRESH: // 下拉刷新
@@ -54,20 +54,28 @@ export default function onAction(state = defaultState, action) {
         case Types.POPULAR_LOAD_MORE_SUCCESS://上拉加载更多
             return {
                 ...state,
-                [action.storeName]:{
+                [action.storeName]: {
                     ...state[action.storeName],
-                    projectModels:action.projectModels,
+                    projectModels: action.projectModels,
                     hideLoadingMore: false,
-                    pageIndex:action.pageIndex,
+                    pageIndex: action.pageIndex,
                 }
             };
         case Types.POPULAR_LOAD_MORE_FAIL:
-            return{
+            return {
                 ...state,
-                [action.storeName]:{
+                [action.storeName]: {
                     ...state[action.storeName],
                     hideLoadingMore: true,
-                    pageIndex:action.pageIndex,
+                    pageIndex: action.pageIndex,
+                }
+            };
+        case Types.FLUSH_POPULAR_FAVORITE: //刷新收藏状态
+            return {
+                ...state,
+                [action.storeName]: {
+                    ...state[action.storeName],
+                    projectModels: action.projectModels,
                 }
             };
         default:

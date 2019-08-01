@@ -25,6 +25,8 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import NavigationUtil from '../navigator/NavigationUtil';
+import EventBus from 'react-native-event-bus';
+import EventTypes from '../util/EventTypes';
 
 import {connect} from 'react-redux';
 
@@ -116,7 +118,14 @@ export  class DynamicTabNavigator extends Component<Props> {
         // const Tab = createAppContainer(tabNavigator);
         const Tab = this.tabNavigator();
 
-        return <Tab/>
+        return <Tab
+            onNavigationStateChange={(prevState,newState,action)=>{
+                EventBus.getInstance().fireEvent(EventTypes.bottom_tab_select,{//发送底部tab切换的事件
+                    from:prevState.index,
+                    to:newState.index
+                })
+            }}
+        />
     }
 }
 
