@@ -25,12 +25,24 @@ export default class BaseItem extends Component {
      */
     static getDerivedStateFrpmProps(nextProps, prevState) {
         const isFavorite = nextProps.projectModel.isFavorite;
-        if (prevState.isFavorite != isFavorite) {
+        if (prevState.isFavorite !== isFavorite) {
             return {
                 isFavorite: isFavorite
             }
         }
         return null;
+    }
+
+
+    componentWillReceiveProps(nextProps, prevState) {
+        const isFavorite = nextProps.projectModel.isFavorite;
+        if (prevState.isFavorite !== isFavorite) {
+            this.setState(
+                {
+                    isFavorite: isFavorite
+                }
+            )
+        }
     }
 
     setFavoriteSate(isFavorite) {

@@ -168,6 +168,7 @@ class PopularTab extends Component<Props> {
 
     renderItem(data) {
         const item = data.item;
+        // console.log("item>>>",item.isFavorite)
         return <PopularItem
             projectModel={item}
             onSelect={(callback) => {

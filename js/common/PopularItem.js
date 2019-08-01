@@ -9,6 +9,7 @@ export default class PopularItem extends BaseItem {
         const {item} = projectModel;
         if (!item || !item.owner) return null;
 
+        // console.log(">>>>>>",this.props.projectModel.isFavorite,item.full_name)
 
         return (
             <TouchableOpacity
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     title: {
-        fontSize: 6,
+        fontSize: 14,
         marginBottom: 2,
         color: '#212121',
 
