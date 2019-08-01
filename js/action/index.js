@@ -1,6 +1,6 @@
 import {onThemeChange} from "./theme";
 import {onloadPopularData, onLoadMorePopular, onFlushPopularFavorite} from './popular'
-import {onloadTrendingData, onLoadMoreTrending} from './trending';
+import {onloadTrendingData, onLoadMoreTrending, onFlushTrendingFavorite} from './trending';
 import {onloadFavoriteData,} from './favorite';
 
 export default {
@@ -11,4 +11,5 @@ export default {
     onLoadMoreTrending,
     onloadFavoriteData,
     onFlushPopularFavorite,
+    onFlushTrendingFavorite,
 }
