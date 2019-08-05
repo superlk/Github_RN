@@ -97,6 +97,17 @@ export default class MyPage extends Component<Props> {
     }
 
     onClick(menu) {
+        let RouteName, params = {};
+        switch (menu) {
+            case MORE_MENU.Tutorial:
+                RouteName = "WebViewPage";
+                params.title = '教程';
+                params.url = 'http://www.baidu.com';
+                break
+        }
+        if (RouteName) {
+            NavigationUtil.goPage(params, RouteName);
+        }
 
     }
 

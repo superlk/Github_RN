@@ -9,13 +9,13 @@ import {
 import WelcomePage from '../page/WelcomePage';
 import HomePage from '../page/HomePage';
 import DetailPage from '../page/DetailPage';
-import FetchDemoPage from '../page/FetchDemoPage';
+import WebViewPage from '../page/WebViewPage';
 import AsyncStorageDemoPage from '../page/AsyncStorageDemoPage';
 import DataStoreDemoPage from '../page/DataStoreDemoPage';
 import {connect} from 'react-redux';
-import {createReactNavigationReduxMiddleware,createReduxContainer} from 'react-navigation-redux-helpers'
+import {createReactNavigationReduxMiddleware, createReduxContainer} from 'react-navigation-redux-helpers'
 
-export const rootCom="Init"; // 设置根路由
+export const rootCom = "Init"; // 设置根路由
 
 const InitNavigator = createStackNavigator({
     WelcomePage: {
@@ -39,27 +39,27 @@ const MainNavigator = createStackNavigator({
             header: null // 通过header这是为null禁用顶部标题
         }
     },
-    FetchDemoPage: {
-        screen: FetchDemoPage,
+    WebViewPage: {
+        screen: WebViewPage,
         navigationOptions: {
             header: null // 通过header这是为null禁用顶部标题
         }
     },
-    AsyncStorageDemoPage: {
-        screen: AsyncStorageDemoPage,
-        navigationOptions: {
-            header: null // 通过header这是为null禁用顶部标题
-        }
-    },
-    DataStoreDemoPage: {
-        screen: DataStoreDemoPage,
-        navigationOptions: {
-            header: null // 通过header这是为null禁用顶部标题
-        }
-    }
+    // AsyncStorageDemoPage: {
+    //     screen: AsyncStorageDemoPage,
+    //     navigationOptions: {
+    //         header: null // 通过header这是为null禁用顶部标题
+    //     }
+    // },
+    // DataStoreDemoPage: {
+    //     screen: DataStoreDemoPage,
+    //     navigationOptions: {
+    //         header: null // 通过header这是为null禁用顶部标题
+    //     }
+    // }
 });
 
-export const RootNavigator= createSwitchNavigator({
+export const RootNavigator = createSwitchNavigator({
     Init: InitNavigator,
     Main: MainNavigator,
 }, {
@@ -68,14 +68,14 @@ export const RootNavigator= createSwitchNavigator({
     },
 });
 
-export  const  middleware =createReactNavigationReduxMiddleware(
+export const middleware = createReactNavigationReduxMiddleware(
     // 'root',  // 使用createReduxContainer ，不需要这个，
-        state=>state.nav);
+    state => state.nav);
 
-const AppWithNavigationSate=createReduxContainer(RootNavigator,'root'); //reduxifyNavigator 已经弃用，该用createReduxContainer
+const AppWithNavigationSate = createReduxContainer(RootNavigator, 'root'); //reduxifyNavigator 已经弃用，该用createReduxContainer
 
-const mapStateToProps=state=>({
-    state:state.nav
+const mapStateToProps = state => ({
+    state: state.nav
 });
 
 export default connect(mapStateToProps)(AppWithNavigationSate);
