@@ -103,12 +103,15 @@ export default class MyPage extends Component<Props> {
                 RouteName = "WebViewPage";
                 params.title = '教程';
                 params.url = 'http://www.baidu.com';
+            case MORE_MENU.Custom_Language:
+                RouteName = "WebViewPage";
+                params.title = '自定义语言';
+                params.url = 'http://www.bilibili.com';
                 break
         }
         if (RouteName) {
             NavigationUtil.goPage(params, RouteName);
         }
-
     }
 
     getItem(menu) {
